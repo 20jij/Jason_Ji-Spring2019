@@ -30,7 +30,7 @@ public class FracCalc {
 	    String operator = threeParts[1];
 	    Fraction operand1 = new Fraction(threeParts[0]);
 	    Fraction operand2 = new Fraction(threeParts[2]);
-	    Fraction operand3 = new Fraction();
+	    Fraction answer = new Fraction();
 	    answer = operand1.doMath(operator, operand2);
 	    return answer.toString();
 	    
@@ -38,18 +38,9 @@ public class FracCalc {
 	    
 	  
 	    
-	    int[] result = new int [3];
+	    
 	   
-	    //return the answer
-	    if (result[1] == 0) {
-	    	 return (result[0] +"");
-	    }
-	    else if(result[0]==0) {
-	    	return (result[1]+ "/" + result[2]);
-	    }
-	    else {
-	    	return ( result[0] + "_" + result[1] + "/" + result[2]) ;
-	    }
+	   
 	    
 		
     }

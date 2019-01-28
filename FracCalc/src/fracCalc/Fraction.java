@@ -55,82 +55,97 @@ public class Fraction {
 	
 	//Methods
 	
-	public Fraction doMath(char operator, Fraction operand) {
+	public Fraction doMath(String operator, Fraction operand) {
 		 //calculations
-		Fraction result = new Fraction();
-	    if (operator =='+') {
-	    	toCommonDenominator(firstOperand, secondOperand);
-	      	result[1] = firstOperand[1] + secondOperand[1];
-	    	result[2] = firstOperand[2];
+	
+	    if (operator.equals("+")) {
+	    	toCommonDenominator(this.operandInt, operandInt);
+	      	operandInt[1] = this.operandInt[1] + operandInt[1];
+	    	operandInt[2] = this.operandInt[2];
 	    }
-	    else if(operator =='-')) {
-	    	toCommonDenominator(firstOperand, secondOperand);
-	    	result[1] = firstOperand[1] - secondOperand[1];
-	    	result[2] = firstOperand[2];
+	    else if(operator.equals("-")) {
+	    	toCommonDenominator(this.operandInt, operandInt);
+	    	operandInt[1] = this.operandInt[1] - operandInt[1];
+	    	operandInt[2] = this.operandInt[2];
 	
 	    }
-	    else if(operator =='*') {
-	    	result[1] = firstOperand[1] * secondOperand[1];
-	    	result[2] = firstOperand[2] * secondOperand[2];
+	    else if(operator.equals("*")) {
+	    	operandInt[1] = this.operandInt[1] * operandInt[1];
+	    	operandInt[2] = this.operandInt[2] * operandInt[2];
 	    } 
 	    else {
-	    	result[1] = firstOperand[1] * secondOperand[2];
-	    	result[2] = firstOperand[2] * secondOperand[1];
+	    	operandInt[1] = this.operandInt[1] * operandInt[2];
+	    	operandInt[2] = this.operandInt[2] * operandInt[1];
 	    	
 	    }
+	    
 	    
 	
 	
 		// reduce fraction
-	    if (result[1]<0 &&result[2]<0) {
-	    	result[1] = -result[1];
-	    	result[2] = -result[2];
+	    if (operandInt[1]<0 &&operandInt[2]<0) {
+	    	operandInt[1] = -operandInt[1];
+	    	operandInt[2] = -operandInt[2];
 	    }
 	    int i = 0;
 	    while (i != 1) {
-	    	i = greatestCommonFactor(result[1], result[2]);
-	    	result[1] = result[1]/i;
-	    	result[2] = result[2]/i;
+	    	i = greatestCommonFactor(operandInt[1], operandInt[2]);
+	    	operandInt[1] = operandInt[1]/i;
+	    	operandInt[2] = operandInt[2]/i;
 	    }
 	    
-	    result[0] = result[1]/result[2];
-	    result[1] = result[1]%result[2];
+	    operandInt[0] = operandInt[1]/operandInt[2];
+	    operandInt[1] = operandInt[1]%operandInt[2];
 	    //change the sign of result fraction part if it's negative.
 	   
 	  
-	    if (result[1] <0) {
-	    	if (result[0]<0) {
-	        	result[1] = -result[1];
+	    if (operandInt[1] <0) {
+	    	if (operandInt[0]<0) {
+	    		operandInt[1] = -this.operandInt[1];
 	        	
 	        } 
-	    	else if (result[0]>0){
-	    		result[0] = -result[0];
-	    		result[1] = -result[1];
+	    	else if (operandInt[0]>0){
+	    	operandInt[0] = -operandInt[0];
+	    		operandInt[1] = -operandInt[1];
 	    	}
 	   
 	    	}
 	    
-	    else if(result[2]<0) {
-	    	if (result[0]<0) {
-	        	result[2] = -result[2];
+	    else if(operandInt[2]<0) {
+	    	if (operandInt[0]<0) {
+	    		operandInt[2] = -operandInt[2];
 	        	
 	        }
-	    	else if (result[0]>0){
-	    		result[0] = -result[0];
-	    		result[2] = -result[2];
+	    	else if (operandInt[0]>0){
+	    		operandInt[0] = -operandInt[0];
+	    		operandInt[2] = -operandInt[2];
 	    	}
-	    	else if (result[0]==0 && result[1]>0) {
-	    		result[1]=-result[1];
-	    		result[2]=-result[2];
+	    	else if (operandInt[0]==0 && operandInt[1]>0) {
+	    		operandInt[1]=-operandInt[1];
+	    		operandInt[2]=-operandInt[2];
 	    	}
+	    	
 	    }
+	    return operand;
 	    
 		
 	}
 	public String toString() {
+		 //return the answer
+	    if (operandInt[1] == 0) {
+	    	 return (operandInt[0] +"");
+	    }
+	    else if(operandInt[0]==0) {
+	    	return (operandInt[1]+ "/" + operandInt[2]);
+	    }
+	    else {
+	    	return ( operandInt[0] + "_" + operandInt[1] + "/" + operandInt[2]) ;
+	    }
+		
+		
 	}
 
-		public static void toCommonDenominator (int [] operand1, int[] operand2) {
+		private static void toCommonDenominator (int [] operand1, int[] operand2) {
 	    	
 	    	int temp = operand1[2] ;
 	    	operand1[2] = operand1[2] * operand2[2];
@@ -143,7 +158,7 @@ public class Fraction {
 	    
 	    
 	    
-	    public static int greatestCommonFactor(int a,int b) {
+	    private static int greatestCommonFactor(int a,int b) {
 	    	double limit = max(absValue(a), absValue(b));
 	    	int result = 1;
 			for (int factor=2; factor<=limit;factor++) {
@@ -160,7 +175,7 @@ public class Fraction {
 	   
 	   
 	    
-	    public static boolean isDivisibleBy(int number1,int number2) {
+	    private static boolean isDivisibleBy(int number1,int number2) {
 			if (number2 == 0) {
 				throw new IllegalArgumentException ("The denominator can't be negative.");
 			}
@@ -172,7 +187,7 @@ public class Fraction {
 				return false;
 			}	
 		}
-	    public static double absValue(double number) {
+	    private static double absValue(double number) {
 			if (number>=0) {
 				double answer = number;
 				return answer;
@@ -193,7 +208,7 @@ public class Fraction {
 	    // TODO: Fill in the space below with any helper methods that you think you will need
 	    
 	}
-}
+
 
 
 	
