@@ -55,27 +55,28 @@ public class Fraction {
 	
 	//Methods
 	
-	public Fraction doMath(String operator, Fraction operand) {
+	public Fraction doMath(String operator, Fraction operand2) {
 		 //calculations
+		Fraction answer = new Fraction();
 	
 	    if (operator.equals("+")) {
-	    	toCommonDenominator(this.operandInt, operandInt);
-	      	operandInt[1] = this.operandInt[1] + operandInt[1];
-	    	operandInt[2] = this.operandInt[2];
+	    	toCommonDenominator(this.operandInt, operand2.operandInt);
+	      	answer.operandInt[1] = this.operandInt[1] +operand2.operandInt[1];
+	    	answer.operandInt[2] = this.operandInt[2];
 	    }
 	    else if(operator.equals("-")) {
-	    	toCommonDenominator(this.operandInt, operandInt);
-	    	operandInt[1] = this.operandInt[1] - operandInt[1];
-	    	operandInt[2] = this.operandInt[2];
+	    	toCommonDenominator(this.operandInt, operand2.operandInt);
+	    	answer.operandInt[1] = this.operandInt[1] - operand2.operandInt[1];
+	    	answer.operandInt[2] = this.operandInt[2];
 	
 	    }
 	    else if(operator.equals("*")) {
-	    	operandInt[1] = this.operandInt[1] * operandInt[1];
-	    	operandInt[2] = this.operandInt[2] * operandInt[2];
+	    	answer.operandInt[1] = this.operandInt[1] * operand2.operandInt[1];
+	    	answer.operandInt[2] = this.operandInt[2] * operand2.operandInt[2];
 	    } 
 	    else {
-	    	operandInt[1] = this.operandInt[1] * operandInt[2];
-	    	operandInt[2] = this.operandInt[2] * operandInt[1];
+	    	answer.operandInt[1] = this.operandInt[1] * operand2.operandInt[2];
+	    	answer.operandInt[2] = this.operandInt[2] * operand2.operandInt[1];
 	    	
 	    }
 	    
@@ -83,50 +84,50 @@ public class Fraction {
 	
 	
 		// reduce fraction
-	    if (operandInt[1]<0 &&operandInt[2]<0) {
-	    	operandInt[1] = -operandInt[1];
-	    	operandInt[2] = -operandInt[2];
+	    if (answer.operandInt[1]<0 &&answer.operandInt[2]<0) {
+	    	answer.operandInt[1] = -answer.operandInt[1];
+	    	answer.operandInt[2] = -answer.operandInt[2];
 	    }
 	    int i = 0;
 	    while (i != 1) {
-	    	i = greatestCommonFactor(operandInt[1], operandInt[2]);
-	    	operandInt[1] = operandInt[1]/i;
-	    	operandInt[2] = operandInt[2]/i;
+	    	i = greatestCommonFactor(answer.operandInt[1], answer.operandInt[2]);
+	    	answer.operandInt[1] = answer.operandInt[1]/i;
+	    	answer.operandInt[2] = answer.operandInt[2]/i;
 	    }
 	    
-	    operandInt[0] = operandInt[1]/operandInt[2];
-	    operandInt[1] = operandInt[1]%operandInt[2];
+	    answer.operandInt[0] = answer.operandInt[1]/answer.operandInt[2];
+	    answer.operandInt[1] = answer.operandInt[1]%answer.operandInt[2];
 	    //change the sign of result fraction part if it's negative.
 	   
 	  
-	    if (operandInt[1] <0) {
-	    	if (operandInt[0]<0) {
-	    		operandInt[1] = -this.operandInt[1];
+	    if (answer.operandInt[1] <0) {
+	    	if (answer.operandInt[0]<0) {
+	    		answer.operandInt[1] = -answer.operandInt[1];
 	        	
 	        } 
-	    	else if (operandInt[0]>0){
-	    	operandInt[0] = -operandInt[0];
-	    		operandInt[1] = -operandInt[1];
+	    	else if (answer.operandInt[0]>0){
+	    		answer.operandInt[0] = -answer.operandInt[0];
+	    		answer.operandInt[1] = -answer.operandInt[1];
 	    	}
 	   
 	    	}
 	    
-	    else if(operandInt[2]<0) {
-	    	if (operandInt[0]<0) {
-	    		operandInt[2] = -operandInt[2];
+	    else if(answer.operandInt[2]<0) {
+	    	if (answer.operandInt[0]<0) {
+	    		answer.operandInt[2] = -answer.operandInt[2];
 	        	
 	        }
-	    	else if (operandInt[0]>0){
-	    		operandInt[0] = -operandInt[0];
-	    		operandInt[2] = -operandInt[2];
+	    	else if (answer.operandInt[0]>0){
+	    		answer.operandInt[0] = -answer.operandInt[0];
+	    		answer.operandInt[2] = -answer.operandInt[2];
 	    	}
-	    	else if (operandInt[0]==0 && operandInt[1]>0) {
-	    		operandInt[1]=-operandInt[1];
-	    		operandInt[2]=-operandInt[2];
+	    	else if (answer.operandInt[0]==0 && answer.operandInt[1]>0) {
+	    		answer.operandInt[1]=-answer.operandInt[1];
+	    		answer.operandInt[2]=-answer.operandInt[2];
 	    	}
 	    	
 	    }
-	    return operand;
+	    return answer;
 	    
 		
 	}
