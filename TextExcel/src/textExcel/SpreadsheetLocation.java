@@ -21,12 +21,12 @@ public class SpreadsheetLocation implements Location
         return colunm;
     }
     
+    //constructor
     public SpreadsheetLocation(String cellName)
     {
-        // TODO: Fill this out with your own code
     	char letter = cellName.charAt(0);
-    	int number = Integer.parseInt(cellName.substring(letter));
-    	row = letter - 'A';
+    	int number = Integer.parseInt(cellName.substring(1));
+    	row = letter - 65;
     	colunm = number-1;
     }
 
