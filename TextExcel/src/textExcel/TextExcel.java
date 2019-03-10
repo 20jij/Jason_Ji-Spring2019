@@ -30,7 +30,7 @@ public class TextExcel
 		    		input = console.nextLine();
 		    		test = input.equalsIgnoreCase("quit");	
 		    }
-		    	SpreadsheetLocation a = new SpreadsheetLocation("A1");
+		    	SpreadsheetLocation a = new SpreadsheetLocation("L20");
 		    	System.out.println("row" + a.getRow() );
 		    	System.out.println("row" + a.getCol() );
 	}

@@ -6,6 +6,16 @@ public class SpreadsheetLocation implements Location
 {
 	int row;
 	int colunm;
+
+    //constructor
+    public SpreadsheetLocation(String cellName)
+    {
+    	char letter = cellName.charAt(0);
+    	int number = Integer.parseInt(cellName.substring(1));
+    	colunm = letter - 65;
+    	row = number-1;
+    }
+
     @Override
     public int getRow()
     {
@@ -21,13 +31,4 @@ public class SpreadsheetLocation implements Location
         return colunm;
     }
     
-    //constructor
-    public SpreadsheetLocation(String cellName)
-    {
-    	char letter = cellName.charAt(0);
-    	int number = Integer.parseInt(cellName.substring(1));
-    	row = letter - 65;
-    	colunm = number-1;
-    }
-
 }
