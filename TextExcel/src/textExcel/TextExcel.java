@@ -14,6 +14,8 @@ public class TextExcel
 
 	public static void main(String[] args)
 	{
+		TestsAll.Helper th = new TestsAll.Helper();
+		System.out.println(th.getText());
 		    	Scanner console = new Scanner(System.in);
 		    	boolean test = false;
 		    	System.out.println("Welcome to TextExcel. Please type a command.");
@@ -30,8 +32,10 @@ public class TextExcel
 		    		input = console.nextLine();
 		    		test = input.equalsIgnoreCase("quit");	
 		    }
-		    	SpreadsheetLocation a = new SpreadsheetLocation("L20");
+		    	/*SpreadsheetLocation a = new SpreadsheetLocation("L20");
 		    	System.out.println("row" + a.getRow() );
 		    	System.out.println("row" + a.getCol() );
+		    	TextCell n = new TextCell("givemeakiss");
+		    	System.out.println(n.fullCellText());*/
 	}
 }
