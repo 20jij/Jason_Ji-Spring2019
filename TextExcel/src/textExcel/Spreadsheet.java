@@ -19,6 +19,7 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
+		
 		return "";
 	}
 
@@ -48,7 +49,33 @@ public class Spreadsheet implements Grid
 	public String getGridText()
 	{
 		// return a single String containing the entire spreadsheet grid.
-		return null;
+		//first row
+		String grid =  "   |";
+		for (int i=0;i<12;i++) {
+			int charNumber = 65 +i;
+			char temp = (char)charNumber;
+			grid = grid + temp +"         |";
+		}
+		grid = grid + "\n";
+		
+		//rest of the rows
+		//header
+		for (int i=0;i<20;i++) {
+			int temp = i +1;
+			if (temp <10) {
+				grid = grid + temp + "  ";
+			}
+			else {
+				grid = grid + temp + " ";
+			}
+			//cells
+			for (int k=0;k<12;k++) {
+				grid = grid +"|          ";
+			}
+			grid = grid + "|" + "\n";
+			
+		}
+		return grid;
 	}
 
 }

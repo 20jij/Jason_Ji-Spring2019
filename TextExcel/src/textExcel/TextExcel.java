@@ -14,7 +14,7 @@ public class TextExcel
 
 	public static void main(String[] args)
 	{
-		TestsAll.Helper th = new TestsAll.Helper();
+		TestsALL.Helper th = new TestsALL.Helper();
 		System.out.println(th.getText());
 		    	Scanner console = new Scanner(System.in);
 		    	boolean test = false;
@@ -24,6 +24,7 @@ public class TextExcel
 				
 				//Create a new Spreadsheet object.
 				Spreadsheet s = new Spreadsheet();
+				System.out.println(s.getGridText());
 				//command loop
 		    	while( test == false) {
 		    		String output = s.processCommand(input);
