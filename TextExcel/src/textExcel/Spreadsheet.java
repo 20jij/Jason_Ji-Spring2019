@@ -19,7 +19,19 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
+		String[] splitCommand = command.split(" ", 3);
+		//cell inspection(A1)
+		if ((int)splitCommand[0].substring(1))
+			
 		
+		//assignment of string values(A1="Hello")
+			
+			
+		//clearing the entire sheet (clear)
+			
+			
+			
+		//clearing a particular cell(clear A1)
 		return "";
 	}
 
