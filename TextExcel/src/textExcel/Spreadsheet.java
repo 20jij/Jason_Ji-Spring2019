@@ -16,25 +16,58 @@ public class Spreadsheet implements Grid
 				
 		}
 	}
+	
+	
+	
+	
 	@Override
 	public String processCommand(String command)
 	{
 		String[] splitCommand = command.split(" ", 3);
-		//cell inspection(A1)
-		if ((int)splitCommand[0].substring(1))
+		SpreadsheetLocation location; 
+		
+		//assignment of string values(A1 = "Hello") and return the entire sheet.
+		if (splitCommand.length==3) {
+			location = new SpreadsheetLocation(splitCommand[0]);
+			s[location.getRow()][location.getCol()] = new TextCell(splitCommand[2]);
+			return getGridText();
+		}
 			
 		
-		//assignment of string values(A1="Hello")
-			
+		//cell inspection(A1)
+		else if (splitCommand[0].length()<4) {
+			location = new SpreadsheetLocation(splitCommand[0]);
+			return s[location.getRow()][location.getCol()].fullCellText();
+		}
+		
+		//clearing a particular cell(clear A1)
+		else if(splitCommand[0].length()==5 && splitCommand.length ==2){
+					location = new SpreadsheetLocation(splitCommand[1]);
+					s[location.getRow()][location.getCol()] = new EmptyCell();
+					return getGridText();
+				}
 			
 		//clearing the entire sheet (clear)
+		else  {
+			for(int row=0;row< getRows();row++) {
+				for(int cols=0;cols<getCols();cols++) {
+					s[row][cols]= new EmptyCell();
+				}
+			}
+			return getGridText();
+		}
 			
 			
-			
-		//clearing a particular cell(clear A1)
-		return "";
+		
+		
 	}
 
+	
+	
+	
+	
+	
+	
 	@Override
 	public int getRows()
 	{
@@ -72,8 +105,8 @@ public class Spreadsheet implements Grid
 		
 		//rest of the rows
 		//header
-		for (int i=0;i<20;i++) {
-			int temp = i +1;
+		for (int rows=0;rows<20;rows++) {
+			int temp = rows +1;
 			if (temp <10) {
 				grid = grid + temp + "  ";
 			}
@@ -81,8 +114,8 @@ public class Spreadsheet implements Grid
 				grid = grid + temp + " ";
 			}
 			//cells
-			for (int k=0;k<12;k++) {
-				grid = grid +"|          ";
+			for (int columns=0;columns<12;columns++) {
+				grid = grid +"|" + s[rows][columns].abbreviatedCellText();
 			}
 			grid = grid + "|" + "\n";
 			

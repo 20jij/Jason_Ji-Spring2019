@@ -3,16 +3,21 @@ package textExcel;
 public class TextCell implements Cell {
 	String text;
 	public TextCell(String input) {
-		text = input;
-
+		//clear quotation marks
+		if (input.equals("\"\"")) {
+			text = " ";
+		}
+		text = input ;
 	}
 	
 	public String abbreviatedCellText() {
-		return text.substring(0,10);
+		String temp =text;
+		temp = temp + "          ";
+		return temp.substring(1,11);
 	}
 	
 	public String fullCellText() {
-		return '"' + text + '"';
+		return  text ;
 	}
 
 }

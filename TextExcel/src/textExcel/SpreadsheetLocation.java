@@ -4,13 +4,13 @@ package textExcel;
 
 public class SpreadsheetLocation implements Location
 {
-	int row;
-	int colunm;
+	private int row;
+	private int colunm;
 
     //constructor
     public SpreadsheetLocation(String cellName)
     {
-    	char letter = cellName.charAt(0);
+    	char letter = Character.toUpperCase(cellName.charAt(0));
     	int number = Integer.parseInt(cellName.substring(1));
     	colunm = letter - 65;
     	row = number-1;
