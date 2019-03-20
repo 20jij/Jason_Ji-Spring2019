@@ -2,20 +2,24 @@ package textExcel;
 
 public class TextCell implements Cell {
 	String text;
+	
+	//TextCell constructor
 	public TextCell(String input) {
-		//clear quotation marks
-		if (input.equals("\"\"")) {
-			text = " ";
-		}
+		
 		text = input ;
 	}
 	
 	public String abbreviatedCellText() {
-		String temp =text;
+		
+		//get rid of two quotation marks
+		String temp = text.substring(1,text.length()-1);
+		
+		//add 10 spaces after the string and return abbreviatedCellText
 		temp = temp + "          ";
-		return temp.substring(1,11);
+		return temp.substring(0,10);
 	}
 	
+	//return full String cell
 	public String fullCellText() {
 		return  text ;
 	}

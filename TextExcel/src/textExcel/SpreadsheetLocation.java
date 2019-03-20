@@ -25,9 +25,6 @@ public class SpreadsheetLocation implements Location
     @Override
     public int getCol()
     {
-    	// represents a location like B6, must be implemented by your SpreadsheetLocation class
-    			 // gets row of this location
-    			 // gets column of this location
         return colunm;
     }
     

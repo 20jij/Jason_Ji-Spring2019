@@ -24,7 +24,8 @@ public class TextExcel
 				
 				//Create a new Spreadsheet object.
 				Spreadsheet s = new Spreadsheet();
-				System.out.println(s.getGridText());
+				
+				//System.out.println(s.getGridText());
 				//command loop
 		    	while( test == false) {
 		    		String output = s.processCommand(input);
