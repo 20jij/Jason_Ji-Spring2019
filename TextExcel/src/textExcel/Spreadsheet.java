@@ -28,9 +28,12 @@ public class Spreadsheet implements Grid
 		
 		//assignment of string values(A1 = "Hello") and return the entire sheet.
 		if (splitCommand.length==3) {
-			location = new SpreadsheetLocation(splitCommand[0]);
-			s[location.getRow()][location.getCol()] = new TextCell(splitCommand[2]);
-			return getGridText();
+			if (splitCommand[2].charAt(0)=='"' && splitCommand[2].charAt(splitCommand[2].length()-1)=='"') {
+				location = new SpreadsheetLocation(splitCommand[0]);
+				s[location.getRow()][location.getCol()] = new TextCell(splitCommand[2]);
+				return getGridText();
+			}
+			
 		}
 			
 		
@@ -60,7 +63,7 @@ public class Spreadsheet implements Grid
 
 	
 	
-	
+	 
 	@Override
 	public int getRows()
 	{
