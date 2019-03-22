@@ -4,14 +4,14 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
-	Cell [][] s ;
+	Cell [][] sheet ;
 	//constructor
 	public Spreadsheet() {
 		//initializes 20 array of 20 rows and 12 columns.
-		s = new Cell [ getRows()][getCols()];
+		sheet = new Cell [ getRows()][getCols()];
 		for(int row=0;row< getRows();row++) {
 			for(int cols=0;cols<getCols();cols++) {
-				s[row][cols]= new EmptyCell();
+				sheet[row][cols]= new EmptyCell();
 			}
 				
 		}
@@ -26,27 +26,42 @@ public class Spreadsheet implements Grid
 		String[] splitCommand = command.split(" ", 3);
 		SpreadsheetLocation location; 
 		
-		//assignment of string values(A1 = "Hello") and return the entire sheet.
+		//assignment of values(A1 = ____) and return the entire sheet.
 		if (splitCommand.length==3) {
+			location = new SpreadsheetLocation(splitCommand[0]);
+			// assignment of string values
 			if (splitCommand[2].charAt(0)=='"' && splitCommand[2].charAt(splitCommand[2].length()-1)=='"') {
-				location = new SpreadsheetLocation(splitCommand[0]);
-				s[location.getRow()][location.getCol()] = new TextCell(splitCommand[2]);
+				sheet[location.getRow()][location.getCol()] = new TextCell(splitCommand[2]);
 				return getGridText();
 			}
+			//assignment of percent
+			else if (splitCommand[2].charAt(splitCommand[2].length()-1)=='%') {
+				
+			}
+			//assignment of double
+			else {
+				sheet[location.getRow()][location.getCol()] = new ValueCell(splitCommand[2]);
+				return getGridText();
+			}
+		}
+		//assignment of formula
+		if (splitCommand.length>3)
+		{
 			
 		}
 			
 		
 		//cell inspection(A1)
 		else if (splitCommand[0].length()<4) {
+			
 			location = new SpreadsheetLocation(splitCommand[0]);
-			return s[location.getRow()][location.getCol()].fullCellText();
-		}
+			return sheet[location.getRow()][location.getCol()].fullCellText();
+			}
 		
 		//clearing a particular cell(clear A1)
 		else if(splitCommand[0].length()==5 && splitCommand.length ==2){
 					location = new SpreadsheetLocation(splitCommand[1]);
-					s[location.getRow()][location.getCol()] = new EmptyCell();
+					sheet[location.getRow()][location.getCol()] = new EmptyCell();
 					return getGridText();
 				}
 			
@@ -54,7 +69,7 @@ public class Spreadsheet implements Grid
 		else  {
 			for(int row=0;row< getRows();row++) {
 				for(int cols=0;cols<getCols();cols++) {
-					s[row][cols]= new EmptyCell();
+					sheet[row][cols]= new EmptyCell();
 				}
 			}
 			return getGridText();
@@ -83,7 +98,7 @@ public class Spreadsheet implements Grid
 	public Cell getCell(Location loc)
 	{
 		//return the cell at this location
-		return s[loc.getRow()][loc.getCol()];
+		return sheet[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
@@ -111,7 +126,7 @@ public class Spreadsheet implements Grid
 			}
 			//cells
 			for (int columns=0;columns<12;columns++) {
-				grid = grid +"|" + s[rows][columns].abbreviatedCellText();
+				grid = grid +"|" + sheet[rows][columns].abbreviatedCellText();
 			}
 			grid = grid + "|" + "\n";
 			
