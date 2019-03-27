@@ -1,14 +1,14 @@
+//@author: Jason Ji
+//Version: March 2019
 package textExcel;
 
 public class RealCell implements Cell {
 	//fields
 	private String valueText;
-	private double value;
 
 	//constructor
 	public RealCell(String input) {
 		valueText = input;
-		value = Integer.parseInt(input);
 	}
 
 	@Override
@@ -27,12 +27,9 @@ public class RealCell implements Cell {
 		return valueText;
 	}
 	
-	public double getValue() {
-		return value;
-	}
 	
 	public double getDoubleValue() {
-		return 0;
+		return Double.parseDouble(valueText);
 	}
 
 }

@@ -1,3 +1,6 @@
+//@author: Jason Ji
+//Version: March 2019
+
 package textExcel;
 
 // Update this file with your own code.
@@ -26,8 +29,16 @@ public class Spreadsheet implements Grid
 		String[] splitCommand = command.split(" ", 3);
 		SpreadsheetLocation location; 
 		
+		//assignment of formula
+		if (command.indexOf("(")>0){
+			location = new SpreadsheetLocation(splitCommand[0]);
+			sheet[location.getRow()][location.getCol()] = new FormulaCell(splitCommand[2]);
+			return getGridText();
+		}
+					
+		
 		//assignment of values(A1 = ____) and return the entire sheet.
-		if (splitCommand.length==3) {
+		else if (splitCommand.length==3) {
 			location = new SpreadsheetLocation(splitCommand[0]);
 			// assignment of string values
 			if (splitCommand[2].charAt(0)=='"' && splitCommand[2].charAt(splitCommand[2].length()-1)=='"') {
@@ -36,7 +47,8 @@ public class Spreadsheet implements Grid
 			}
 			//assignment of percent
 			else if (splitCommand[2].charAt(splitCommand[2].length()-1)=='%') {
-				
+				sheet[location.getRow()][location.getCol()] = new PercentCell(splitCommand[2]);
+				return getGridText();
 			}
 			//assignment of double
 			else {
@@ -44,12 +56,7 @@ public class Spreadsheet implements Grid
 				return getGridText();
 			}
 		}
-		//assignment of formula
-		if (splitCommand.length>3)
-		{
-			
-		}
-			
+		
 		
 		//cell inspection(A1)
 		else if (splitCommand[0].length()<4) {

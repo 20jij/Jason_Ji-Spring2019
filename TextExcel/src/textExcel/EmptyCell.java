@@ -1,5 +1,6 @@
 //@author Jason Ji
-//3/4/2019
+//version March 2019
+
 package textExcel;
 
 public class EmptyCell implements Cell {
