@@ -14,8 +14,7 @@ public class TextExcel
 
 	public static void main(String[] args)
 	{
-		TestsALL.Helper th = new TestsALL.Helper();
-		System.out.println(th.getText());
+		
 		    	Scanner console = new Scanner(System.in);
 		    	boolean test = false;
 		    	System.out.println("Welcome to TextExcel. Please type a command.");

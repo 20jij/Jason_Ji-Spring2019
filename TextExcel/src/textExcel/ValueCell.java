@@ -16,11 +16,8 @@ public class ValueCell extends RealCell {
 		return temp;
 	}
 	
-	@Override
-	public String fullCellText() {
 
-		return getValueText();
-	}
+	
 	
 	@Override
 	public double getDoubleValue() {
