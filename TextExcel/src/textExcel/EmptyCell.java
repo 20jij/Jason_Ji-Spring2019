@@ -3,7 +3,7 @@
 
 package textExcel;
 
-public class EmptyCell implements Cell {
+public class EmptyCell  implements Cell{
 
 	// constructor
 	public EmptyCell() {
