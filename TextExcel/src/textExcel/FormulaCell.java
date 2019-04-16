@@ -26,12 +26,12 @@ public class FormulaCell extends RealCell {
 		//check the first term
 		
 		//SUM 
-		if (splitFormula[1].equals("SUM")) {
+		if (splitFormula[1].equalsIgnoreCase("SUM")) {
 			answer = getSum(splitFormula[2]);
 			return answer;
 		}
 		//AVG
-		else if (splitFormula[1].equals("AVG")) {
+		else if (splitFormula[1].equalsIgnoreCase("AVG")) {
 			answer = getAvg(splitFormula[2]);
 			return answer;
 		}
@@ -88,8 +88,7 @@ public class FormulaCell extends RealCell {
 		
 		for (int col = start.getCol(); col <= end.getCol();col++) {
 			for (int row =start.getRow(); row<=end.getRow();row++ ) {
-				Location cell = new SpreadsheetLocation(Integer.toString(col) + row);
-				RealCell casting =(RealCell)(sheetCopy.getCell(cell));
+				RealCell casting =(RealCell)(sheetCopy.getCell(col,row));
 				sum = sum +casting.getDoubleValue();
 				count++;
 			}

@@ -17,6 +17,7 @@ public class SpreadsheetLocation implements Location
     	colunm = letter - 65;
     	row = number-1;
     }
+  
 
     @Override
     public int getRow()

@@ -34,7 +34,7 @@ public class Spreadsheet implements Grid
 		//assignment of formula
 		if (command.indexOf("(")>0){
 			location = new SpreadsheetLocation(splitCommand[0]);
-			sheet[location.getRow()][location.getCol()] = new FormulaCell(splitCommand[2], new Spreadsheet());
+			sheet[location.getRow()][location.getCol()] = new FormulaCell(splitCommand[2], this);
 			return getGridText();
 		}
 					
@@ -109,7 +109,9 @@ public class Spreadsheet implements Grid
 		//return the cell at this location
 		return sheet[loc.getRow()][loc.getCol()];
 	}
-
+	public Cell getCell(int a, int b) {
+		return sheet[a][b];
+		}
 	@Override
 	public String getGridText()
 	{
