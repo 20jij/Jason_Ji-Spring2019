@@ -6,7 +6,7 @@ public class PercentCell extends RealCell {
 	
 	//fields
 	//string without % sign
-	private String decimalString = (super.getValueText()).substring(0, super.getValueText().length()-1);
+	private String decimalString = (super.fullCellText()).substring(0, super.fullCellText().length()-1);
 	
 	//constructor
 	public PercentCell(String input) {

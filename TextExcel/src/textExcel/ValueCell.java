@@ -11,7 +11,7 @@ public class ValueCell extends RealCell {
 	@Override
 	//I need to change int to double format if it passes in an int 12 12.0
 	public String abbreviatedCellText() {
-		double result = Double.parseDouble(getValueText());
+		double result = Double.parseDouble(fullCellText());
 		String temp = (result + "          ").substring(0,10);
 		return temp;
 	}
@@ -21,7 +21,7 @@ public class ValueCell extends RealCell {
 	
 	@Override
 	public double getDoubleValue() {
-		return Double.parseDouble(getValueText());
+		return Double.parseDouble(fullCellText());
 	}
 	
 

@@ -22,11 +22,6 @@ public class RealCell implements Cell {
 		return valueText;
 	}
 	
-	//getValueText and getValue methods that allow subclasses to access the fields.
-	public String getValueText() {
-		return valueText;
-	}
-	
 	
 	public double getDoubleValue() {
 		return Double.parseDouble(valueText);
