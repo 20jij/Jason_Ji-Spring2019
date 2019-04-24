@@ -35,7 +35,7 @@ public class Spreadsheet implements Grid
 		if (command.indexOf("(")>0){
 			location = new SpreadsheetLocation(splitCommand[0]);
 			sheet[location.getRow()][location.getCol()] = new FormulaCell(splitCommand[2], this);
-			return getGridText();
+			
 		}
 					
 		
@@ -45,17 +45,16 @@ public class Spreadsheet implements Grid
 			// assignment of string values
 			if (splitCommand[2].charAt(0)=='"' && splitCommand[2].charAt(splitCommand[2].length()-1)=='"') {
 				sheet[location.getRow()][location.getCol()] = new TextCell(splitCommand[2]);
-				return getGridText();
+				
 			}
 			//assignment of percent
 			else if (splitCommand[2].charAt(splitCommand[2].length()-1)=='%') {
 				sheet[location.getRow()][location.getCol()] = new PercentCell(splitCommand[2]);
-				return getGridText();
+				
 			}
 			//assignment of double
 			else {
 				sheet[location.getRow()][location.getCol()] = new ValueCell(splitCommand[2]);
-				return getGridText();
 			}
 		}
 		
@@ -71,7 +70,7 @@ public class Spreadsheet implements Grid
 		else if(splitCommand[0].length()==5 && splitCommand.length ==2){
 					location = new SpreadsheetLocation(splitCommand[1]);
 					sheet[location.getRow()][location.getCol()] = new EmptyCell();
-					return getGridText();
+					
 				}
 			
 		//clearing the entire sheet (clear)
@@ -81,8 +80,9 @@ public class Spreadsheet implements Grid
 					sheet[row][cols]= new EmptyCell();
 				}
 			}
-			return getGridText();
-		}		
+			
+		}
+		return getGridText();
 	}
 
 	

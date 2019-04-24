@@ -35,6 +35,7 @@ public class FormulaCell extends RealCell {
 		else if (splitFormula[1].equalsIgnoreCase("AVG")) {
 			answer = getAvg(splitFormula[2]);
 			System.out.println("avg: "+answer);
+			count = 0;
 			return answer;
 		}
 		//cell reference or numbers 
@@ -98,6 +99,7 @@ public class FormulaCell extends RealCell {
 				count++;
 			}
 		}
+		System.out.println("sum:" + sum +  "count:" + count );
 		return sum;
 	}
 	
