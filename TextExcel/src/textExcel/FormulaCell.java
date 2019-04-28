@@ -7,6 +7,7 @@ public class FormulaCell extends RealCell {
 	//field
 	private Spreadsheet sheetCopy;
 	int count=0;
+	
 	//constructor
 	public FormulaCell(String input,Spreadsheet sheet) {
 		super(input);
@@ -20,7 +21,6 @@ public class FormulaCell extends RealCell {
 		
 	}
 	public double getDoubleValue() {
-		System.out.println("Text: "+fullCellText());
 		String[]  splitFormula =  fullCellText().split(" ");
 		double answer;
 		//check the first term
@@ -28,15 +28,12 @@ public class FormulaCell extends RealCell {
 		//SUM 
 		if (splitFormula[1].equalsIgnoreCase("SUM")) {
 			answer = getSum(splitFormula[2]);
-			System.out.println("sum: "+answer);
-			return answer;
 		}
 		//AVG
 		else if (splitFormula[1].equalsIgnoreCase("AVG")) {
 			answer = getAvg(splitFormula[2]);
-			System.out.println("avg: "+answer);
 			count = 0;
-			return answer;
+			
 		}
 		//cell reference or numbers 
 		else  {
@@ -82,8 +79,8 @@ public class FormulaCell extends RealCell {
 					answer = answer / temp;
 				}
 		     }
-			return answer;
 		}
+		return answer;
 	}
 	public double getSum(String input) {
 		double sum=0;
@@ -99,7 +96,6 @@ public class FormulaCell extends RealCell {
 				count++;
 			}
 		}
-		System.out.println("sum:" + sum +  "count:" + count );
 		return sum;
 	}
 	

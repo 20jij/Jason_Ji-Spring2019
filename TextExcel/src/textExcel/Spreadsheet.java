@@ -31,8 +31,13 @@ public class Spreadsheet implements Grid
 		String[] splitCommand = command.split(" ", 3);
 		SpreadsheetLocation location; 
 		
+		//return an empty string if passes in an empty string.
+		if (command.equals("")) {
+			return "";
+		}
+		
 		//assignment of formula
-		if (command.indexOf("(")>0){
+		if (command.indexOf("(")>0 && command.indexOf("(")< 7 && command.indexOf(")")>0){
 			location = new SpreadsheetLocation(splitCommand[0]);
 			sheet[location.getRow()][location.getCol()] = new FormulaCell(splitCommand[2], this);
 			

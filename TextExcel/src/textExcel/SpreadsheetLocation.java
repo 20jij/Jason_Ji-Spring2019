@@ -12,6 +12,7 @@ public class SpreadsheetLocation implements Location
     //constructor
     public SpreadsheetLocation(String cellName)
     {
+    	
     	char letter = Character.toUpperCase(cellName.charAt(0));
     	int number = Integer.parseInt(cellName.substring(1));
     	colunm = letter - 65;
